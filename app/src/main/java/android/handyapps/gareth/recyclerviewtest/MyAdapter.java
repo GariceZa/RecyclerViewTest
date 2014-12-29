@@ -1,7 +1,6 @@
 package android.handyapps.gareth.recyclerviewtest;
 
 import android.support.v7.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private String[] mDataSet;
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -30,8 +28,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         mDataSet = myDataSet;
     }
 
-
     @Override
+    // Called when RecyclerView needs a new RecyclerView.ViewHolder of the given type to represent an item.
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.testlayout, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -39,6 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
+    // Called by RecyclerView to display the data at the specified position.
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
         TextView title = (TextView)viewHolder.mTextView.findViewById(R.id.title);
         TextView msg = (TextView)viewHolder.mTextView.findViewById(R.id.msg);
@@ -47,6 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
+    // Returns the total number of items in the data set hold by the adapter.
     public int getItemCount() {
         return mDataSet.length;
     }

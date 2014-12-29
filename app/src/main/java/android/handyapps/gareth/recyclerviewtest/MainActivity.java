@@ -21,15 +21,15 @@ public class MainActivity extends ActionBarActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
-        // use this setting to improve performance if you know that changes
+        // Use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
+        // Use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
+        // Specify an adapter
         mAdapter = new MyAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
     }
