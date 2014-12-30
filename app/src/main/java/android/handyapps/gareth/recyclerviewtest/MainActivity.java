@@ -1,10 +1,9 @@
 package android.handyapps.gareth.recyclerviewtest;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 
 
 public class MainActivity extends ActionBarActivity {

@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-/**
- * Created by Gareth on 2014-12-29.
- */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private String[] mDataSet;
@@ -39,8 +36,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     // Called by RecyclerView to display the data at the specified position.
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
-        TextView title = (TextView)viewHolder.mTextView.findViewById(R.id.title);
-        TextView msg = (TextView)viewHolder.mTextView.findViewById(R.id.msg);
+        TextView title  = (TextView)viewHolder.mTextView.findViewById(R.id.title);
+        TextView msg    = (TextView)viewHolder.mTextView.findViewById(R.id.msg);
         title.setText(mDataSet[i]);
         msg.setText("This is a text section showing you an example of what a description would look like in the recycler view");
     }
