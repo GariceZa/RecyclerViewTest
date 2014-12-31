@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private String[] mDataSet;
+    ArrayList<String> timearr = new ArrayList<>();
+    ArrayList<String> msgarr = new ArrayList<>();
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -21,16 +24,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
-    public MyAdapter(String[] myDataSet) {
-        mDataSet = myDataSet;
+    public MyAdapter(ArrayList<String> myDataSetTime,ArrayList<String>myDataSetMsg) {
+        timearr = myDataSetTime;
+        msgarr = myDataSetMsg;
     }
 
     @Override
     // Called when RecyclerView needs a new RecyclerView.ViewHolder of the given type to represent an item.
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.testlayout, viewGroup, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -38,13 +41,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
         TextView title  = (TextView)viewHolder.mTextView.findViewById(R.id.title);
         TextView msg    = (TextView)viewHolder.mTextView.findViewById(R.id.msg);
-        title.setText(mDataSet[i]);
-        msg.setText("This is a text section showing you an example of what a description would look like in the recycler view");
+        title.setText(timearr.get(i));
+        msg.setText(msgarr.get(i));
+        //msg.setText("This is a text section showing you an example of what a description would look like in the recycler view");
     }
 
     @Override
     // Returns the total number of items in the data set hold by the adapter.
     public int getItemCount() {
-        return mDataSet.length;
+        return timearr.size();
     }
 }
