@@ -27,7 +27,6 @@ public class MainActivity extends ActionBarActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    //private String [] myDataset = {"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +46,6 @@ public class MainActivity extends ActionBarActivity {
 
         //--------------------------------------------------
 
-        // Executing async task to retrieve data from api
-        new LoadAlerts().execute();
-
-
         // Setting up the swipe refresh layout
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
@@ -62,6 +57,9 @@ public class MainActivity extends ActionBarActivity {
         });
         //---------------------------------------------------
 
+        // Executing async task to retrieve data from api
+        new LoadAlerts().execute();
+        //--------------------------------------------------
     }
 
     private class LoadAlerts extends AsyncTask<Void, Void, String> {
@@ -76,10 +74,12 @@ public class MainActivity extends ActionBarActivity {
             HttpEntity httpEntity;
 
             try {
+                // Retrieve data from API
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 HttpGet httpGet = new HttpGet(url);
                 HttpResponse httpResponse = httpClient.execute(httpGet);
                 httpEntity = httpResponse.getEntity();
+                //--------------------------------------------------
 
                 if (httpEntity != null) {
                     resp = EntityUtils.toString(httpEntity);
@@ -98,11 +98,13 @@ public class MainActivity extends ActionBarActivity {
             Log.v("Response", s);
 
             try {
+                // Create JSON Array from response
                 JSONArray jsonArray = new JSONArray(s);
 
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     try {
+                        // Add data to array lists
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         time.add(jsonObject.getString("AlertTime"));
                         msg.add(jsonObject.getString("AlertDescription"));
